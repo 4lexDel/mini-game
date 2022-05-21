@@ -1,0 +1,11 @@
+{
+    "name": "mini-game",
+    "version": "1.0.0",
+    "description": "plateforme regroupant plein de jeux avec un système de room",
+    "main": "server/index.js",
+    "scripts": {
+        "test": "node server/index.js"
+    },
+    "author": "4lexDel",
+    "license": "ISC"
+}
