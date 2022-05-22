@@ -1,0 +1,44 @@
+label {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#playerList,
+.chatArea {
+    border: 3px solid grey;
+    border-radius: 5px;
+    background-color: aliceblue;
+}
+
+#playerList,
+.chatArea {
+    height: 250px;
+    width: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.message {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    width: 65%;
+    overflow-wrap: break-word;
+}
+
+.myMessage {
+    background-color: blue;
+    color: white;
+    margin-left: 35%;
+}
+
+.otherMessage {
+    background-color: orange;
+    color: white;
+}
+
+#playerList ul li {
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+}

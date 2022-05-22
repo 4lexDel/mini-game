@@ -1,0 +1,13 @@
+A corriger :
+
+- Gestion de la liste des players :
+    Comment déterminer les players à supprimer ? => Une socket déco peut être relayé par une autre
+        -> setTimeout puis vérifier si la socket id à été modiff !
+
+
+A faire :
+    - Penser à reset les champs
+
+
+A verif :
+    - Probleme double creation de room
