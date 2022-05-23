@@ -16,17 +16,31 @@ server.listen(port, 'localhost', () => { //SERVEUR
     console.log('Ecoute sur le port ' + port);
 });
 
+function getPublicPath() {
+    var test = __dirname.split("\\");
+    test.pop();
+    test.push("public");
+    return test.join("\\");
+}
+
+app.get('/', (req, res) => {
+    //res.sendFile(getPublicPath() + "/game");
+    //req.socket.localAddress;
+    res.sendFile(getPublicPath() + "/login.html");
+});
+
 require('./chat'); //Utilisation du systeme de chat
 
 io.on('connection', (socket) => {
     console.log("Bonjour " + socket.id); //Première connexion
 
-    let a = new Player(socket.id, "guest" + socket.id);
-
     socket.on('start-session', (data) => {
         console.log("============start-session event================");
         console.log(data);
+
         if (data.sessionId == null || data.sessionId == "null") { //1iere connexion
+            new Player(socket.id, "guest" + socket.id);
+
             let sessionIDGenerate = uuidv4(); //generating the sessions_id and then binding that socket to that sessions 
 
             console.log(sessionIDGenerate);
@@ -36,7 +50,7 @@ io.on('connection', (socket) => {
 
             if (player != undefined) {
                 player.sessionID = sessionIDGenerate;
-                player.id = socket.id;
+                player.id = socket.id; //Nouvel socket donc id à actualiser
 
                 console.log(player);
 
@@ -47,7 +61,7 @@ io.on('connection', (socket) => {
             let player = Player.selectPlayerBySessionID(data.sessionId);
 
             if (player != undefined) {
-                player.id = socket.id; //Nouvel socket donc id à actualiser
+                player.id = socket.id;
 
                 console.log("Je te reconnais : " + player.name + " from : " + player.roomID);
 
@@ -62,30 +76,38 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on("disconnect", () => {
+    socket.on("disconnect", async() => {
         console.log("Au revoir " + socket.id)
 
-        /*let player = Player.selectPlayerByID(socket.id); //Player à potentiellement delete
+        await pause(5000);
 
-        if (player != undefined && player.roomID != undefined) {
-            let room = Room.selectRoom(player.roomID); //Room du player
-            socket.leave(player.roomID);
+        let player = Player.selectPlayerByID(socket.id);
 
-            room.removePlayer(socket.id); //Player enlevé du cache de la room
+        if (player != undefined) { //Si après x sec on s'apercoit qu'ont peut toujours accéder au joueur "déco" grace à la socket alors on le vire 
 
-            io.to(room.id).emit('players list', Object.values(room.players)); //Liste refresh pour les joueurs restants
+            if (player.roomID != undefined) {
+                let room = Room.selectRoom(player.roomID); //Room du player
+                socket.leave(player.roomID);
 
-            if (room.isEmpty()) {
-                console.log("REMOVE IT !"); //////////////////////////////////////////////////////////////
-                Room.removeRoom(room.id);
+                room.removePlayer(socket.id); //Player enlevé du cache de la room
+
+                if (room.isEmpty()) {
+                    console.log("REMOVE IT !");
+                    Room.removeRoom(room.id);
+                } else io.to(room.id).emit('players list', Object.values(room.players)); //Liste refresh pour les joueurs restants
+
             }
-        }
+            Player.removePlayer(socket.id);
 
-        Player.removePlayer(socket.id);*/
+            console.log("Nettoyage terminé !");
+
+            console.log(Player.players);
+        }
     });
 
     socket.on('create room', (roomID, pseudo) => {
         console.log("Create : " + roomID + " : " + io.sockets.adapter.rooms.has(roomID));
+
         if (!io.sockets.adapter.rooms.has(roomID)) { //On verifie que la room n'existe pas
             console.log("SUCCESS")
             io.to(socket.id).emit('room created', true); //Accusé reception
@@ -129,6 +151,10 @@ io.on('connection', (socket) => {
         }
     });
 })
+
+async function pause(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
 
 function refreshPlayerList(room) {
     if (room.id != undefined) io.to(room.id).emit('players list', Object.values(room.players)); //Liste refresh
