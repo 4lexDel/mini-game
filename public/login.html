@@ -10,46 +10,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="margin:20px;">
-    <!--<div id="playerList">
+<body class="bg-info">
+    <br><br><br><br><br><br><br><br>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <label class="text-align-center" for="pseudo">Pseudo</label><br>
+                <input class="form-control" type="text" id="pseudoInput">
+
+                <br><br>
+
+                <label for="room">Room</label><br>
+                <input class="form-control" type="text" id="roomInput">
+
+                <br>
+
+                <div id="resultRoom"></div>
+
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join room</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create new room</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <br>-->
-
-    <!--<form action="" id="roomForm">-->
-    <label for="pseudo">Pseudo</label><br>
-    <input type="text" id="pseudoInput">
-
-    <br><br>
-
-    <label for="room">Room</label><br>
-    <input type="text" id="roomInput">
-
-    <br>
-
-    <div id="resultRoom"></div>
-
-    <button id="joinRoomButton" onclick="joinRoom()">Join room</button>
-    <button id="createRoomButton" onclick="createRoom()">Create new room</button>
-    <!--</form>-->
-
-    <br><br><br>
-
-    <!--<form action="" id="globalMessageForm">
-        <label for="result">Chat global</label><br>
-        <div class="chatArea" id="resultGlobalMessage"><br></div>
-
-        <input type="text" id="globalMessageInput">
-        <button id="sendGlobalMessageButton">Send message</button>
-    </form>
-
-    <form action="" id="roomMessageForm">
-        <label for="result">Chat room</label><br>
-        <div class="chatArea" id="resultRoomMessage"><br></div>
-
-        <input type="text" id="roomMessageInput">
-        <button id="sendRoomMessageButton">Send message</button>
-    </form>-->
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./assets/jquery/jquery-3.6.0.min.js"></script>
