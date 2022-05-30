@@ -6,8 +6,8 @@ A corriger :
 
 - Création de room depuis une room 
 
-- Le "Nettoyage" n'est pas parfait !               ---------------------------- PRIORITE N°1 ----------------------------
-        -> Surtout lorsqu''on fait au moins un refresh avant de le fermer
+- Crash server lorsque une session expire               ---------------------------- PRIORITE N°1 ----------------------------
+        -> DETECTER ET SUPPRIMER !!
 
 A faire :
     - Penser à reset les champs

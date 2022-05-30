@@ -26,7 +26,7 @@ function getPublicPath() {
 app.get('/', (req, res) => {
     //res.sendFile(getPublicPath() + "/game");
     //req.socket.localAddress;
-    res.sendFile(getPublicPath() + "/login.html");
+    res.sendFile(getPublicPath() + "/index.html");
 });
 
 require('./chat'); //Utilisation du systeme de chat
