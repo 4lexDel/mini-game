@@ -34,6 +34,8 @@ function createRoom() {
     value = $("#roomInput").val();
     pseudo = $("#pseudoInput").val();
 
+    console.log(value + " : " + pseudo);
+
     if (value != "") {
         socket.emit("create room", value, pseudo);
     } else {
