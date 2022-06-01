@@ -1,5 +1,17 @@
 const socket = io();
 
+console.log('check 1', socket.connected);
+socket.on('connect', function() {
+    console.log('check 2', socket.connected);
+});
+
+
+setInterval(() => { //TEST !!
+    if (!socket.connected) {
+        io.connect();
+    }
+}, 3000);
+
 function refreshSessionInformations() {
     // Get saved data from sessionStorage
     let session_id = sessionStorage.getItem('sessionId');
