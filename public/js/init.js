@@ -8,7 +8,11 @@ socket.on('connect', function() {
 
 setInterval(() => { //TEST !!
     if (!socket.connected) {
-        io.connect();
+        //socket = io();
+        sessionStorage.setItem('sessionId', undefined);
+        sessionStorage.setItem('name', undefined);
+        sessionStorage.setItem('roomID', undefined);
+        document.location.href = "./index.html";
     }
 }, 3000);
 
