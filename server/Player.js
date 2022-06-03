@@ -7,8 +7,6 @@ module.exports =
             this.name = name;
             this.roomID;
 
-            this.sessionID = null;
-
             Player.players.push(this);
             console.log("TEST : " + Player.players.length)
         }
