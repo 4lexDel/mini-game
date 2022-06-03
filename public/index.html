@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini-game</title>
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="style.css">
 
     <link rel="manifest" href="./manifest.json">
@@ -44,34 +44,15 @@
     <link rel="apple-touch-startup-image" href="public/assets/img/icon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
 </head>
 
-<body class="bg-info">
-    <br><br><br><br><br><br><br><br>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <label class="text-align-center" for="pseudo">Pseudo</label><br>
-                <input class="form-control" type="text" id="pseudoInput">
+<body>
+    <nav class="nav">
+        <a href="/" class="nav__link" data-link>Home</a>
+        <a href="/game" class="nav__link" data-link>Game</a>
+    </nav>
 
-                <br><br>
-
-                <label for="room ">Room</label><br>
-                <input class="form-control" type="text" id="roomInput">
-
-                <br>
-
-                <div id="resultRoom"></div>
-
-                <div class="row justify-content-center">
-                    <div class="col-6">
-                        <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join room</button>
-                    </div>
-                    <div class="col-6">
-                        <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create new room</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="app">
     </div>
+
     <script src="/socket.io/socket.io.js "></script>
     <script src="./assets/jquery/jquery-3.6.0.min.js "></script>
 
@@ -79,8 +60,9 @@
         const socket = io();
     </script>
 
+    <script type="module" src="./js/initSPA.js"></script>
     <script src="./js/script.js "></script>
-    <script src="./js/chatClient.js "></script>
+    <!--<script src="./js/chatClient.js "></script>-->
 
     <script src="./js/initPWA.js "></script>
 </body>
