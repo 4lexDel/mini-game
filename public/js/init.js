@@ -6,7 +6,7 @@ socket.on('connect', function() {
 });
 
 
-setInterval(() => { //TEST !!
+/*setInterval(() => { //TEST !!
     if (!socket.connected) {
         //socket = io();
         sessionStorage.setItem('sessionId', undefined);
@@ -14,7 +14,7 @@ setInterval(() => { //TEST !!
         sessionStorage.setItem('roomID', undefined);
         document.location.href = "./index.html";
     }
-}, 3000);
+}, 3000);*/
 
 function refreshSessionInformations() {
     // Get saved data from sessionStorage
