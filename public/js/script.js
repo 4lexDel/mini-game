@@ -1,3 +1,5 @@
+//import navigateTo from "./index.js";
+
 $(document).ready(() => {
     $("#roomForm").on('submit', function(e) {
         e.preventDefault();
@@ -21,7 +23,7 @@ socket.on("room joined", (state) => {
     if (state) {
         $("#resultRoom").html('<div  class="alert alert-success" role="alert">Room join successfuly !</div>');
         //loadGame($("#homeContent"));
-        document.location.href = "./game.html";
+        navigateTo("./game");
         refreshSessionInformations(); //DEMANDE D'INFOS
     } else {
         console.log("Failed");
@@ -47,7 +49,7 @@ function createRoom() {
 socket.on("room created", (state) => {
     if (state) {
         $("#result").html('<div  class="alert alert-success" role="alert">Room create successfuly !</div>');
-        document.location.href = "./game.html";
+        navigateTo("./game");
         refreshSessionInformations(); //On change de page donc on reinforme le serveur de qui on est
     } else {
         $("#result").html('<div  class="alert alert-danger" role="alert">Failed !</div>');

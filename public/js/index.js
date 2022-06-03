@@ -59,3 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     router();
 });
+
+/*document.body.addEventListener("click", e => {
+    console.log("Test from a module");
+    console.log(e);
+})*/
+
+$(document).ready(function() {
+    console.log("zegrhzfaefzsnklfn");
+
+    console.log(document.body);
+
+    let test = document.getElementById("joinRoomButton");
+
+    console.log(test);
+
+    test.addEventListener("click", () => {
+        console.log("Join button");
+    })
+})

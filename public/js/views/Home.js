@@ -7,7 +7,25 @@ export default class extends AbstractView {
     }
 
     async getHtml() {
-        return '<h1>Welcome at Home !</h1>';
+        return `
+        <h1>Welcome at Home !</h1>
+
+        <label for="pseudo">Pseudo</label><br>
+        <input type="text" id="pseudoInput">
+        
+        <br><br>
+        
+        <label for="room ">Room</label><br>
+        <input type="text" id="roomInput">
+        
+        <br>
+        
+        <div id="resultRoom"></div>
+        
+        <button id="joinRoomButton" onclick="joinRoom()">Join room</button>
+        <button id="createRoomButton" onclick="createRoom()">Create new room</button>
+        `;
+
         /*return `
         <div class="container-fluid">
         <div class="row justify-content-center">
