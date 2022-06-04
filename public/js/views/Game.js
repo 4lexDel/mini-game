@@ -7,7 +7,27 @@ export default class extends AbstractView {
     }
 
     async getHtml() {
-        return '<h1>Welcome at Game !</h1>';
+        return `
+        <form action="" id="globalMessageForm">
+            <br>
+            <label for="result">Chat global</label><br>
+            <div class="chatArea" id="resultGlobalMessage"><br></div>
+            <br>
+            <input type="text" id="globalMessageInput">
+
+            <button id="sendGlobalMessageButton">Send</button>
+        </form>
+        <form action="" id="roomMessageForm">
+            <br>
+            <label for="result">Chat room</label><br>
+            <div class="chatArea" id="resultRoomMessage"><br></div>
+            <br>
+
+            <input type="text" id="roomMessageInput">
+
+            <button id="sendRoomMessageButton">Send</button>
+        </form>
+        `;
 
         /*return `
         <div id="playerList">

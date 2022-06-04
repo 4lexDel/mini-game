@@ -19,18 +19,6 @@ function joinRoom() {
 }
 //RECUP LISTE ROOM ?
 
-socket.on("room joined", (state) => {
-    if (state) {
-        $("#resultRoom").html('<div  class="alert alert-success" role="alert">Room join successfuly !</div>');
-        //loadGame($("#homeContent"));
-        navigateTo("./game");
-        refreshSessionInformations(); //DEMANDE D'INFOS
-    } else {
-        console.log("Failed");
-        $("#resultRoom").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
-    }
-});
-
 function createRoom() {
     //console.log("Create room");
     value = $("#roomInput").val();
@@ -45,13 +33,3 @@ function createRoom() {
     }
     //capturer erreur
 }
-
-socket.on("room created", (state) => {
-    if (state) {
-        $("#result").html('<div  class="alert alert-success" role="alert">Room create successfuly !</div>');
-        navigateTo("./game");
-        refreshSessionInformations(); //On change de page donc on reinforme le serveur de qui on est
-    } else {
-        $("#result").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
-    }
-});

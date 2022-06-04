@@ -57,7 +57,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    console.log($("button"));
+
+    setTimeout(() => {
+        console.log($("button"));
+    }, 1);
+
     router();
+});
+
+
+socket.on("room joined", (state) => {
+    if (state) {
+        $("#resultRoom").html('<div  class="alert alert-success" role="alert">Room join successfuly !</div>');
+        //loadGame($("#homeContent"));
+        navigateTo("./game");
+    } else {
+        console.log("Failed");
+        $("#resultRoom").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
+    }
+});
+
+socket.on("room created", (state) => {
+    if (state) {
+        $("#result").html('<div  class="alert alert-success" role="alert">Room create successfuly !</div>');
+        navigateTo("./game");
+    } else {
+        $("#result").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
+    }
 });
 
 /*document.body.addEventListener("click", e => {
@@ -65,16 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(e);
 })*/
 
-$(document).ready(function() {
-    console.log("zegrhzfaefzsnklfn");
-
-    console.log(document.body);
-
-    let test = document.getElementById("joinRoomButton");
-
-    console.log(test);
-
-    test.addEventListener("click", () => {
-        console.log("Join button");
-    })
-})
+// $(document).ready(function() {
+//     console.log($(document));
+//     $("#joinRoomButton").click(function() {
+//         console.log("Join button");
+//     })
+// })
