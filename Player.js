@@ -12,8 +12,9 @@ module.exports =
         }
 
         static removePlayer(id) {
+            console.log("Remove action");
             for (let i = 0; i < Player.players.length; i++) {
-                if (Player.players[i].id == id) Player.players.splice(i, 1);
+                if (Player.players[i].id == id) Player.players = Player.players.slice(0, i).concat(Player.players.slice(i + 1));
             }
         }
 

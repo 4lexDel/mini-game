@@ -24,13 +24,14 @@ require('./chat'); //Utilisation du systeme de chat
 
 io.on('connection', (socket) => {
     console.log("Bonjour " + socket.id); //Première connexion
+    new Player(socket.id, "guest" + socket.id);
 
     socket.on("disconnect", async() => {
         console.log("Au revoir " + socket.id)
         let player = Player.selectPlayerByID(socket.id);
 
         if (player != undefined) {
-
+            console.log("Player définis");
             if (player.roomID != undefined) {
                 let room = Room.selectRoom(player.roomID); //Room du player
                 socket.leave(player.roomID);

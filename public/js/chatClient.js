@@ -2,7 +2,7 @@ $(document).ready(() => {
     //$("#globalMessageInput").focus();
     //when form is submitted, capture the input value and then send it to server
 
-    $("#globalMessageForm").on('submit', function(e) {
+    /*$("#globalMessageForm").on('submit', function(e) {
         e.preventDefault();
 
         if ($("#globalMessageInput").val() != "") {
@@ -18,8 +18,22 @@ $(document).ready(() => {
             socket.emit("send room message", $("#roomMessageInput").val());
             $("#roomMessageInput").val("");
         }
-    });
+    });*/
 });
+
+function sendGlobalMessage() {
+    if ($("#globalMessageInput").val() != "") {
+        socket.emit("send global message", $("#globalMessageInput").val());
+        $("#globalMessageInput").val("");
+    }
+}
+
+function sendRoomMessage() {
+    if ($("#roomMessageInput").val() != "") {
+        socket.emit("send room message", $("#roomMessageInput").val());
+        $("#roomMessageInput").val("");
+    }
+}
 
 socket.on("global message", (player, data) => {
     displayMessage($(resultGlobalMessage), data, player);
