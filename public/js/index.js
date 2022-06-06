@@ -15,6 +15,7 @@ const getParams = match => {
 };
 
 const navigateTo = url => {
+    if (url != "/" && !roomJoin) url = "/";
     history.pushState(null, null, url);
     router();
 };
@@ -55,9 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target.matches("[data-link]")) {
             e.preventDefault();
 
-            let url = e.target.href;
-
-            if (url == "/" || roomJoin) navigateTo(url);
+            navigateTo(e.target.href);
         }
     });
 
