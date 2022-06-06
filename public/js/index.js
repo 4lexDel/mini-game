@@ -1,6 +1,7 @@
 import Home from "./views/Home.js";
 import Game from "./views/Game.js";
 
+var roomJoin = false;
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$"); //Pourquoi un "." ?
 
@@ -18,13 +19,13 @@ const navigateTo = url => {
     router();
 };
 
-const router = async() => {
-    const routes = [
-        { path: "/", view: Home },
-        { path: "/game", view: Game },
-        // { path: "/posts/:id", view: PostView },
-    ];
+const routes = [
+    { path: "/", view: Home },
+    { path: "/game", view: Game },
+    // { path: "/posts/:id", view: PostView },
+];
 
+const router = async() => {
     // Test each route for potential match
     const potentialMatches = routes.map(route => {
         return {
@@ -53,7 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", e => {
         if (e.target.matches("[data-link]")) {
             e.preventDefault();
-            navigateTo(e.target.href);
+
+            let url = e.target.href;
+
+            if (url == "/" || roomJoin) navigateTo(url);
         }
     });
 
@@ -70,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 socket.on("room joined", (state) => {
     if (state) {
         $("#resultRoom").html('<div  class="alert alert-success" role="alert">Room join successfuly !</div>');
-        //loadGame($("#homeContent"));
+        roomJoin = true;
         navigateTo("./game");
     } else {
         console.log("Failed");
@@ -81,6 +85,7 @@ socket.on("room joined", (state) => {
 socket.on("room created", (state) => {
     if (state) {
         $("#result").html('<div  class="alert alert-success" role="alert">Room create successfuly !</div>');
+        roomJoin = true;
         navigateTo("./game");
     } else {
         $("#result").html('<div  class="alert alert-danger" role="alert">Failed !</div>');

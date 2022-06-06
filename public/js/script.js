@@ -1,12 +1,3 @@
-//import navigateTo from "./index.js";
-
-$(document).ready(() => {
-    $("#roomForm").on('submit', function(e) {
-        e.preventDefault();
-    });
-})
-
-
 function joinRoom() {
     //document.getElementById("result").innerHTML = "Room create successfuly !";
     value = $("#roomInput").val();
