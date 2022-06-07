@@ -6,6 +6,7 @@ module.exports =
             this.id = id;
             this.name = name;
             this.roomID;
+            this.score = 0;
 
             Player.players.push(this);
             console.log("TEST : " + Player.players.length)

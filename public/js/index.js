@@ -1,5 +1,10 @@
 import Home from "./views/Home.js";
-import Game from "./views/Game.js";
+import Game from "./views/Game.js"; //View
+
+import * as roomAction from "./roomAction.js";
+import * as toolBox from "./toolBox.js"; //Appel de script pour divers fonctionnalités
+import * as chatClient from "./chatClient.js";
+import * as getGameInfo from "./getGameInfo.js";
 
 var roomJoin = false;
 

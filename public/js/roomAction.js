@@ -1,7 +1,7 @@
-function joinRoom() {
+export function joinRoom() {
     //document.getElementById("result").innerHTML = "Room create successfuly !";
-    value = $("#roomInput").val();
-    pseudo = $("#pseudoInput").val();
+    let value = $("#roomInput").val();
+    let pseudo = $("#pseudoInput").val();
 
     socket.emit("join room", value, pseudo);
 
@@ -10,10 +10,11 @@ function joinRoom() {
 }
 //RECUP LISTE ROOM ?
 
-function createRoom() {
+export function createRoom() {
     //console.log("Create room");
-    value = $("#roomInput").val();
-    pseudo = $("#pseudoInput").val();
+    let value = $("#roomInput").val();
+    //value = document.getElementById("roomInput");
+    let pseudo = $("#pseudoInput").val();
 
     console.log(value + " : " + pseudo);
 
@@ -25,9 +26,5 @@ function createRoom() {
     //capturer erreur
 }
 
-function chatTrigger(triggerID) {
-    console.log(triggerID + " CHANGE !");
-    console.log($(triggerID));
-
-    $(triggerID).toggle(500);
-}
+window.createRoom = createRoom;
+window.joinRoom = joinRoom;

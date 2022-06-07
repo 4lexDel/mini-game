@@ -102,6 +102,12 @@ async function pause(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+setInterval(() => { //PERFORMANCE ??
+    Room.rooms.forEach(room => {
+        refreshPlayerList(room);
+    });
+}, 1000);
+
 function refreshPlayerList(room) {
     if (room.id != undefined) io.to(room.id).emit('players list', Object.values(room.players)); //Liste refresh
 } //Faut que la room existe

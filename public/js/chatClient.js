@@ -1,39 +1,20 @@
-$(document).ready(() => {
-    //$("#globalMessageInput").focus();
-    //when form is submitted, capture the input value and then send it to server
-
-    /*$("#globalMessageForm").on('submit', function(e) {
-        e.preventDefault();
-
-        if ($("#globalMessageInput").val() != "") {
-            socket.emit("send global message", $("#globalMessageInput").val());
-            $("#globalMessageInput").val("");
-        }
-    });
-
-    $("#roomMessageForm").on('submit', function(e) {
-        e.preventDefault();
-
-        if ($("#roomMessageInput").val() != "") {
-            socket.emit("send room message", $("#roomMessageInput").val());
-            $("#roomMessageInput").val("");
-        }
-    });*/
-});
-
-function sendGlobalMessage() {
+export function sendGlobalMessage() {
     if ($("#globalMessageInput").val() != "") {
         socket.emit("send global message", $("#globalMessageInput").val());
         $("#globalMessageInput").val("");
     }
 }
 
-function sendRoomMessage() {
+window.sendGlobalMessage = sendGlobalMessage;
+
+export function sendRoomMessage() {
     if ($("#roomMessageInput").val() != "") {
         socket.emit("send room message", $("#roomMessageInput").val());
         $("#roomMessageInput").val("");
     }
 }
+
+window.sendRoomMessage = sendRoomMessage;
 
 socket.on("global message", (player, data) => {
     displayMessage($(resultGlobalMessage), data, player);
@@ -52,22 +33,4 @@ function displayMessage(element, message, player) {
     console.log(messageHTML);
 
     element.append(messageHTML);
-}
-
-socket.on('players list', function(list) {
-    players = list;
-    console.log("Player list refresh");
-
-    refreshPlayerList(list);
-});
-
-function refreshPlayerList(players) {
-    let htmlContent = "<ul>";
-
-    players.forEach(player => {
-        htmlContent += "<li>" + player.name + " : " + player.score + "</li>";
-    });
-    htmlContent += "</ul>";
-
-    $("#playerList").html(htmlContent);
 }
