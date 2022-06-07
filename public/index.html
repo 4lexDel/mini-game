@@ -45,35 +45,17 @@
 </head>
 
 <body>
-    <main>
+    <div class="container-fluid">
         <nav class="header">
             <a href="/" class="nav__link" data-link>Home</a>
             <a href="/game" class="nav__link" data-link>Game</a>
         </nav>
 
-        <div id="app">
-        </div>
-    </main>
-
-    <!-- <div class="content">
-        <br><br><br>
-        <h1>Welcome at Home !</h1>
-
-        <label for="pseudo">Pseudo</label><br>
-        <input class="form-control" type="text" id="pseudoInput">
-
-        <br><br>
-
-        <label for="room ">Room</label><br>
-        <input class="form-control" type="text" id="roomInput">
-
         <br>
 
-        <div id="resultRoom"></div>
-
-        <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join room</button>
-        <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create new room</button>
-    </div> -->
+        <div id="app">
+        </div>
+    </div>
 
     <script src="/socket.io/socket.io.js "></script>
     <script>
@@ -89,7 +71,6 @@
     <script src="./js/initPWA.js "></script>
 
     <br><br><br>
-
 </body>
 
 </html>

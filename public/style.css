@@ -4,19 +4,19 @@ body {
     background-color: #2DCDF5;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
+.container-fluid,
+html,
+body {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .header {
-    margin: 0;
     /* align-self: ; */
-    width: auto;
-    height: auto;
+    /* width: auto;
+    height: auto; */
     background: #222222;
     display: flex;
     flex-direction: row;
@@ -36,23 +36,16 @@ main {
     font-size: 25px;
 }
 
-#app {
-    /* width: 100%; */
+.game {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin: 10px;
 }
 
-a {
-    color: #009579;
-}
-
-.right_area {
+.gameInfo {
     justify-self: flex-end;
 }
 
-.left_area {
+.gameContent {
     width: 100%;
 }
 
@@ -72,6 +65,7 @@ label {
     color: black;
 }
 
+#roomList,
 #playerList,
 .chatArea {
     border: 3px solid grey;
@@ -85,7 +79,12 @@ label {
     flex-direction: column;
 }
 
-#playerList {
+#buttonMessage {
+    display: block;
+}
+
+#playerList,
+#roomList {
     height: 100px;
 }
 
