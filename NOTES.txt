@@ -16,3 +16,4 @@ GENERALITE :
     - Création de room depuis une room 
     - Quitter une room
     - Recup les infos et injecter dans le front de manier clean
+    - Fixé une limite de players

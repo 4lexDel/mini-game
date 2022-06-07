@@ -2,8 +2,9 @@ module.exports =
     class Room {
         static rooms = []
 
-        constructor(id) {
+        constructor(id, access = false) {
             this.id = id;
+            this.access = access;
 
             this.players = [];
 

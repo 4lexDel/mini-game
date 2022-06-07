@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on('create room', (roomID, pseudo) => {
+    socket.on('create room', (roomID, pseudo, access) => {
         console.log("Create : " + roomID + " : " + io.sockets.adapter.rooms.has(roomID));
 
         if (!io.sockets.adapter.rooms.has(roomID)) { //On verifie que la room n'existe pas
@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
                 console.log("joined successfully ");
             }); //Le createur de la room la rejoint automatiquement
 
-            let newRoom = new Room(roomID);
+            let newRoom = new Room(roomID, access);
             let player = Player.selectPlayerByID(socket.id);
             if (player != undefined) {
                 player.name = pseudo;
@@ -106,6 +106,12 @@ setInterval(() => { //PERFORMANCE ??
     Room.rooms.forEach(room => {
         refreshPlayerList(room);
     });
+}, 1000);
+
+setInterval(() => { //PERFORMANCE ??
+    let publicRooms = Room.rooms.filter(room => room.access == false);
+
+    io.emit('rooms list', Object.values(publicRooms)); //Liste refresh
 }, 1000);
 
 function refreshPlayerList(room) {

@@ -12,20 +12,37 @@ export default class extends AbstractView {
             <br><br><br>
             <h1>Welcome at Home !</h1>
 
+            <br>
+
             <label for="pseudo">Pseudo</label><br>
             <input class="form-control" type="text" id="pseudoInput">
             
-            <br><br>
+            <br><hr>
             
             <label for="room ">Room</label><br>
             <input class="form-control" type="text" id="roomInput">
             
             <br>
+
+            <input class="form-check-input" type="checkbox" id="roomAccessRadio">
+            <label for="private ">Private</label>
+
+            <br><br>
             
             <div id="resultRoom"></div>
             
-            <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join room</button>
-            <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create new room</button>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join</button>
+                </div>
+                <div class="col-6">
+                <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create</button>
+                </div>
+            </div>
+
+            <br><br><br>
+
+            <div id="roomList"></div>
         </div>
         `;
 
@@ -47,10 +64,10 @@ export default class extends AbstractView {
         
                 <div class="row justify-content-center">
                     <div class="col-6">
-                        <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join room</button>
+                        <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join</button>
                     </div>
                     <div class="col-6">
-                        <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create new room</button>
+                        <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create</button>
                     </div>
                 </div>
             </div>

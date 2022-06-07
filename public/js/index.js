@@ -1,10 +1,10 @@
 import Home from "./views/Home.js";
 import Game from "./views/Game.js"; //View
 
-import * as roomAction from "./roomAction.js";
+import * as roomAction from "./home/roomAction.js";
 import * as toolBox from "./toolBox.js"; //Appel de script pour divers fonctionnalités
 import * as chatClient from "./chatClient.js";
-import * as getGameInfo from "./getGameInfo.js";
+import * as getInfo from "./getInfo.js";
 
 var roomJoin = false;
 
@@ -53,6 +53,8 @@ const router = async() => {
 
     document.querySelector("#app").innerHTML = await view.getHtml();
 };
+
+navigateTo("/"); //------------------------------------------------Home par défaut
 
 window.addEventListener("popstate", router);
 

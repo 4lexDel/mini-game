@@ -16,14 +16,34 @@ export function createRoom() {
     //value = document.getElementById("roomInput");
     let pseudo = $("#pseudoInput").val();
 
-    console.log(value + " : " + pseudo);
+    let access = $("#roomAccessRadio").is(':checked');
+
+    console.log(value + " : " + pseudo + " (" + access + ")");
+    //console.log($("#roomAccessRadio"));
 
     if (value != "") {
-        socket.emit("create room", value, pseudo);
+        socket.emit("create room", value, pseudo, access);
     } else {
         $("#resultRoom").html('<div  class="alert alert-warning" role="alert">Input empty !</div>');
     }
     //capturer erreur
+}
+
+socket.on('rooms list', function(list) {
+    console.log("Rooms list refresh");
+
+    refreshRoomList(list);
+});
+
+function refreshRoomList(rooms) {
+    let htmlContent = "<ul>";
+
+    rooms.forEach(room => {
+        htmlContent += "<li>Name : " + room.id + " : Joueurs connectés" + room.players.length + "</li>";
+    });
+    htmlContent += "</ul>";
+
+    $("#roomList").html(htmlContent);
 }
 
 window.createRoom = createRoom;
