@@ -83,8 +83,12 @@ label {
     display: block;
 }
 
-#playerList,
 #roomList {
+    height: 50px;
+    width: 100%;
+}
+
+#playerList {
     height: 100px;
 }
 

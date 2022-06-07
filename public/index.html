@@ -46,15 +46,61 @@
 
 <body>
     <div class="container-fluid">
-        <nav class="header">
-            <a href="/" class="nav__link" data-link>Home</a>
-            <a href="/game" class="nav__link" data-link>Game</a>
-        </nav>
+        <div class="row">
+            <nav class="header">
+                <a href="/" class="nav__link" data-link>Home</a>
+                <a href="/game" class="nav__link" data-link>Game</a>
+            </nav>
+        </div>
 
         <br>
 
         <div id="app">
         </div>
+
+        <!-- <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-10">
+                <h1>Welcome at Home !</h1>
+                <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <br>
+
+                            <label for="pseudo">Pseudo</label><br>
+                            <input class="form-control" type="text" id="pseudoInput">
+
+                            <br>
+                            <hr>
+
+                            <label for="room ">Room</label><br>
+                            <input class="form-control" type="text" id="roomInput">
+
+                            <br>
+
+                            <input class="form-check-input" type="checkbox" id="roomAccessRadio">
+                            <label for="private ">Private</label>
+
+                            <br><br>
+
+                            <div id="resultRoom"></div>
+
+                            <div class="row justify-content-center">
+                                <div class="col-6">
+                                    <button class="w-100 btn btn-secondary btn-lg" id="joinRoomButton" onclick="joinRoom()">Join</button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="w-100 btn btn-primary btn-lg" id="createRoomButton" onclick="createRoom()">Create</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="roomList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     </div>
 
     <script src="/socket.io/socket.io.js "></script>

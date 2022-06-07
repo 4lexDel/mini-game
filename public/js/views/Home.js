@@ -41,8 +41,9 @@ export default class extends AbstractView {
                     </div>
                 </div>
 
-                <br><br><br>
+                <br><hr><br>
 
+                <label for="room ">Public room</label><br>
                 <div id="roomList"></div>
             </div>
         </div>  

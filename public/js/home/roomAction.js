@@ -39,7 +39,7 @@ function refreshRoomList(rooms) {
     let htmlContent = "<ul>";
 
     rooms.forEach(room => {
-        htmlContent += "<li>Name : " + room.id + " : Joueurs connectés" + room.players.length + "</li>";
+        htmlContent += "<li>" + room.id + " : Joueurs connectés : " + room.players.length + "</li>";
     });
     htmlContent += "</ul>";
 
