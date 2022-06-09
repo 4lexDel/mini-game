@@ -33,7 +33,7 @@ body {
 
 .nav__link:hover {
     background: rgba(255, 255, 255, 0.05);
-    font-size: 25px;
+    /* font-size: 25px; */
 }
 
 .game {

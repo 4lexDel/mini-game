@@ -3,7 +3,7 @@ const Player = require("./Player");
 const Room = require("./Room");
 
 // app.use("/public", express.static(path.resolve(__dirname, "public")));
-app.use(express.static("public"));
+app.use("/static", express.static(path.resolve(__dirname, "public", "static")));
 //app.use(express.static("public/js"));
 
 app.get("/*", (req, res) => {

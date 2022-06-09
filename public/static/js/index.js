@@ -8,26 +8,28 @@ import * as getInfo from "./getInfo.js";
 
 var roomJoin = false;
 
-const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$"); //Pourquoi un "." ?
+const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.*)") + "$");
 
 const getParams = match => {
     const values = match.result.slice(1);
-    const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(result => result[1]); //Qu'est ce que \w ?
+    const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(result => result[1]);
+    //console.log(keys);
 
     return Object.fromEntries(keys.map((key, i) => {
+        console.log([key, values[i]]);
         return [key, values[i]];
     }));
 };
 
 const navigateTo = url => {
-    if (url != "/" && !roomJoin) url = "/";
+    //if (url != "/" && !roomJoin) url = "/";
     history.pushState(null, null, url);
     router();
 };
 
 const routes = [
     { path: "/", view: Home },
-    { path: "/game", view: Game },
+    { path: "/game/:id", view: Game },
     // { path: "/posts/:id", view: PostView },
 ];
 
@@ -54,7 +56,7 @@ const router = async() => {
     document.querySelector("#app").innerHTML = await view.getHtml();
 };
 
-navigateTo("/"); //------------------------------------------------Home par défaut
+//navigateTo("/"); //------------------------------------------------Home par défaut
 
 window.addEventListener("popstate", router);
 
@@ -81,7 +83,7 @@ socket.on("room joined", (state) => {
     if (state) {
         $("#resultRoom").html('<div  class="alert alert-success" role="alert">Room join successfuly !</div>');
         roomJoin = true;
-        navigateTo("./game");
+        navigateTo("./game/");
     } else {
         console.log("Failed");
         $("#resultRoom").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
@@ -92,7 +94,7 @@ socket.on("room created", (state) => {
     if (state) {
         $("#result").html('<div  class="alert alert-success" role="alert">Room create successfuly !</div>');
         roomJoin = true;
-        navigateTo("./game");
+        navigateTo("./game/");
     } else {
         $("#result").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
     }
