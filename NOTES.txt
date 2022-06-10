@@ -1,22 +1,17 @@
-A corriger :
-
-
-
 Reflexion :
-    - Moduler le front ?
-    - Architecture !!!! => Mettre les lignes de codes au bonne endroit !
-
     - Réaliser la connexion dans la view ???????????????????????????????????
             - Creer des class spécifique associé ??
-
-
-
-Problemes :     
-    SI on switch de liens les champs sont reset !!!!!!!!!!!!!!!!!!!!!!!!
-    Trouver un moyen de faire que des modules!
+            - Avant d'appeler le fichier getHTML on appel "initView()" qui revoit promesse ?? (Déclancher un emit dans le controleur si besoin ?)-----------------------------------
+    - RENOMMER LE DOSSIER VIEW !!
 
 GENERALITE :
     - Création de room depuis une room 
     - Quitter une room
     - Recup les infos et injecter dans le front de manier clean
-    - Fixé une limite de players
+    - Fixé une limite de players (Modération de manière générale)
+
+
+
+
+Compter les lignes de codes :
+    public/static/assets/*, package-lock.json

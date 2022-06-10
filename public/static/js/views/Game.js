@@ -4,6 +4,10 @@ export default class extends AbstractView {
     constructor(params) {
         super(params);
         this.setTitle("Game");
+
+        console.log(params);
+
+        if (params["id"] != "" && params["name"] != "") socket.emit("join room", params["id"], params["name"]);
     }
 
     async getHtml() {

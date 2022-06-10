@@ -21,7 +21,7 @@ const getParams = match => {
     }));
 };
 
-const navigateTo = url => {
+export const navigateTo = url => {
     //if (url != "/" && !roomJoin) url = "/";
     history.pushState(null, null, url);
     router();
@@ -29,8 +29,7 @@ const navigateTo = url => {
 
 const routes = [
     { path: "/", view: Home },
-    { path: "/game/:id", view: Game },
-    // { path: "/posts/:id", view: PostView },
+    { path: "/game/:id/:name", view: Game },
 ];
 
 const router = async() => {
@@ -45,6 +44,7 @@ const router = async() => {
     let match = potentialMatches.find(potentialMatch => potentialMatch.result !== null);
 
     if (!match) {
+        console.log("Pas trouvé sorry");
         match = {
             route: routes[0],
             result: [location.pathname]
@@ -69,12 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    console.log($("button"));
-
-    setTimeout(() => {
-        console.log($("button"));
-    }, 1);
-
     router();
 });
 
@@ -83,7 +77,7 @@ socket.on("room joined", (state) => {
     if (state) {
         $("#resultRoom").html('<div  class="alert alert-success" role="alert">Room join successfuly !</div>');
         roomJoin = true;
-        navigateTo("./game/");
+        //navigateTo("./game/");
     } else {
         console.log("Failed");
         $("#resultRoom").html('<div  class="alert alert-danger" role="alert">Failed !</div>');

@@ -1,9 +1,13 @@
+import { navigateTo } from "../index.js";
+
 export function joinRoom() {
     //document.getElementById("result").innerHTML = "Room create successfuly !";
     let value = $("#roomInput").val();
     let pseudo = $("#pseudoInput").val();
 
-    socket.emit("join room", value, pseudo);
+    navigateTo("./game/" + value + "/" + pseudo);
+
+    //socket.emit("join room", value, pseudo);
 
     $("#roomInput").val("");
     $("#pseudoInput").val("");
@@ -39,7 +43,7 @@ function refreshRoomList(rooms) {
     let htmlContent = "<ul>";
 
     rooms.forEach(room => {
-        htmlContent += "<li>" + room.id + " : Joueurs connectés : " + room.players.length + "</li>";
+        htmlContent += "<li><a href=\"./game/" + room.id + "/guest\" data-link>" + room.id + " : " + room.players.length + " joueur(s)</li>";
     });
     htmlContent += "</ul>";
 
