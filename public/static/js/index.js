@@ -88,7 +88,7 @@ socket.on("room created", (state) => {
     if (state) {
         $("#result").html('<div  class="alert alert-success" role="alert">Room create successfuly !</div>');
         roomJoin = true;
-        navigateTo("./game/");
+        navigateTo("./game//");
     } else {
         $("#result").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
     }
