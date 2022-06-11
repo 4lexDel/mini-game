@@ -5,7 +5,7 @@ export function joinRoom() {
     let value = $("#roomInput").val();
     let pseudo = $("#pseudoInput").val();
 
-    navigateTo("./game/" + value + "/" + pseudo);
+    navigateTo("/game/" + value + "/" + pseudo);
 
     //socket.emit("join room", value, pseudo);
 

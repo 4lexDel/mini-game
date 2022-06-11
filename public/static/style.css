@@ -2,6 +2,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
     background-color: #2DCDF5;
+    overflow-x: hidden;
 }
 
 .container-fluid,
@@ -80,7 +81,7 @@ label {
 }
 
 #buttonMessage {
-    display: block;
+    /* display: block; */
 }
 
 #roomList {

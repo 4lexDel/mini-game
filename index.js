@@ -96,6 +96,27 @@ io.on('connection', (socket) => {
             io.to(socket.id).emit('room joined', false);
         }
     });
+
+    socket.on('leave room', () => { //Code similaire à la déco à quelques détails près
+        console.log("Deco de room " + socket.id)
+        let player = Player.selectPlayerByID(socket.id);
+
+        if (player != undefined) {
+            if (player.roomID != undefined) {
+                let room = Room.selectRoom(player.roomID); //Room du player
+                socket.leave(player.roomID);
+
+                room.removePlayer(socket.id); //Player enlevé du cache de la room
+
+                if (room.isEmpty()) {
+                    console.log("REMOVE IT !");
+                    Room.removeRoom(room.id);
+                } else io.to(room.id).emit('players list', Object.values(room.players)); //Liste refresh pour les joueurs restants
+
+            }
+        }
+        Player.selectPlayerByID(socket.id).roomID = undefined; //Pour les fois d'apres tres important !!
+    })
 })
 
 async function pause(time) {
