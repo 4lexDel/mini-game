@@ -1,4 +1,4 @@
-import AbstractView from "./AbstractView.js";
+import AbstractView from "../AbstractView.js";
 
 export default class extends AbstractView {
     constructor(params) {
@@ -11,6 +11,7 @@ export default class extends AbstractView {
     async getHtml() {
         return `
         <div class="container">
+            <br>
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-sm-6">
                     <h1>Welcome at Home !</h1>

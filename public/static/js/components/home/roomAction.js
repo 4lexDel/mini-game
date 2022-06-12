@@ -1,4 +1,4 @@
-import { navigateTo } from "../index.js";
+import { navigateTo } from "../../index.js";
 
 export function joinRoom() {
     //document.getElementById("result").innerHTML = "Room create successfuly !";
