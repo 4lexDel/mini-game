@@ -1,5 +1,4 @@
 import AbstractView from "../AbstractView.js";
-import { resizeCanvas } from "./gameTools.js";
 
 export default class extends AbstractView {
     constructor(params) {

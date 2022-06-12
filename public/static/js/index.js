@@ -5,7 +5,7 @@ import * as roomAction from "./components/home/roomAction.js";
 import * as toolBox from "./toolBox.js"; //Appel de script pour divers fonctionnalités
 import * as chatClient from "./chatClient.js";
 import * as getInfo from "./getInfo.js";
-import * as toolsGame from "./components/game/gameTools.js"
+import * as gameTools from "./components/game/gameTools.js";
 
 var roomJoin = false;
 
