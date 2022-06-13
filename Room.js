@@ -9,6 +9,8 @@ module.exports =
             this.players = [];
 
             this.playerLimit = playerLimit;
+            if (this.playerLimit < 2) this.playerLimit = 2;
+            else if (this.playerLimit > 100) this.playerLimit = 100;
 
             Room.rooms.push(this);
         }
@@ -33,6 +35,11 @@ module.exports =
 
         isEmpty() {
             if (this.players.length <= 0) return true;
+            return false;
+        }
+
+        isFull() {
+            if (this.players.length >= this.playerLimit) return true;
             return false;
         }
 

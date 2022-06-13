@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
 
         if (io.sockets.adapter.rooms.has(roomID) &&
             Player.selectPlayerByID(socket.id).roomID == undefined &&
-            room.playerLimit > room.players.length) { //On test la limite
+            !room.isFull()) { //On test la limite
 
             console.log("SUCCESS");
             io.to(socket.id).emit('room joined', true); //EMPECHER DE REJOINDRE LA MEME ??
