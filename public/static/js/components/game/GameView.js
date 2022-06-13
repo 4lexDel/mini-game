@@ -14,6 +14,7 @@ export default class extends AbstractView {
         return `
         <div class="game">
             <div class="gameContent bg-info">
+                <br>
                 <canvas id="canvasGame" style="background-color: beige;">Your browser doesn't support canvas</canvas>
             </div>
 
@@ -83,9 +84,9 @@ export default class extends AbstractView {
 
     initComponent() {
         //console.log("Init component");
-        let widthElement = $(".gameContent").width();
-        let heightElement = $(window).height();
-        heightElement *= 4 / 5;
+        let widthElement = $("#canvasGame").parent().width();
+        let heightElement = $("#canvasGame").parent().height();
+        heightElement = document.documentElement.clientHeight * 8 / 10;
 
         $("#canvasGame").width(widthElement).height(heightElement);
     }

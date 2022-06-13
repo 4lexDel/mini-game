@@ -83,6 +83,7 @@ socket.on("room joined", (state) => {
     } else {
         console.log("Failed");
         $("#resultRoom").html('<div  class="alert alert-danger" role="alert">Failed !</div>');
+        navigateTo("/");
     }
 });
 

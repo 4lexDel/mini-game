@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on('create room', (roomID, pseudo, access) => {
+    socket.on('create room', (roomID, pseudo, access, playerNumber) => {
         console.log("Create : " + roomID + " : " + io.sockets.adapter.rooms.has(roomID));
 
         if (!io.sockets.adapter.rooms.has(roomID)) { //On verifie que la room n'existe pas
@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
                 console.log("joined successfully ");
             }); //Le createur de la room la rejoint automatiquement
 
-            let newRoom = new Room(roomID, access);
+            let newRoom = new Room(roomID, access, playerNumber);
             let player = Player.selectPlayerByID(socket.id);
             if (player != undefined) {
                 player.name = pseudo;
@@ -79,12 +79,16 @@ io.on('connection', (socket) => {
 
     socket.on('join room', (roomID, pseudo) => {
         console.log("Join : " + roomID + " : " + io.sockets.adapter.rooms.has(roomID));
-        if (io.sockets.adapter.rooms.has(roomID) && Player.selectPlayerByID(socket.id).roomID == undefined) {
-            console.log("SUCCESS")
+        let room = Room.selectRoom(roomID);
+
+        if (io.sockets.adapter.rooms.has(roomID) &&
+            Player.selectPlayerByID(socket.id).roomID == undefined &&
+            room.playerLimit > room.players.length) { //On test la limite
+
+            console.log("SUCCESS");
             io.to(socket.id).emit('room joined', true); //EMPECHER DE REJOINDRE LA MEME ??
 
             socket.join(roomID);
-            let room = Room.selectRoom(roomID);
             let player = Player.selectPlayerByID(socket.id);
             player.name = pseudo;
 

@@ -26,10 +26,18 @@ export default class extends AbstractView {
                     <label for="room ">Room</label><br>
                     <input class="form-control" type="text" id="roomInput">
                     
-                    <br>
+                    <br><hr>
 
-                    <input class="form-check-input" type="checkbox" id="roomAccessRadio">
-                    <label for="private ">Private</label>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <input class="form-check-input" type="checkbox" id="roomAccessRadio">
+                            <label for="private ">Private</label>
+                        </div>
+                        <div class="col-8">
+                            <input value="2" class="form-number-input" type="number" id="playerLimitNumber" min="2" max="100">
+                            <label for="limitNumber ">Nombre de joueur(s) max</label>
+                        </div>
+                    </div>
 
                     <br><br>
                     
@@ -45,7 +53,7 @@ export default class extends AbstractView {
                     </div>
 
                     <br><hr><br>
-
+                    
                     <label for="room ">Public room</label><br>
                     <div id="roomList"></div>
                 </div>

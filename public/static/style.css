@@ -2,17 +2,19 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
     background-color: #2DCDF5;
-    overflow: hidden;
+    /* width: 100%; */
 }
 
-.container-fluid,
+
+/* 
 html,
 body {
     margin-right: 0px;
     margin-left: 0px;
     padding-left: 0px;
     padding-right: 0px;
-}
+    width: 100%;
+} */
 
 .header {
     /* align-self: ; */
@@ -69,8 +71,7 @@ label {
 
 #roomList,
 #playerList,
-.chatArea,
-#canvasGame {
+.chatArea {
     border: 3px solid grey;
     border-radius: 5px;
     background-color: aliceblue;
@@ -118,13 +119,16 @@ label {
 }
 
 #canvasGame {
-    /* width: 100%;
-    height: 100%; */
+    border: 3px solid grey;
+    border-radius: 5px;
+    background-color: aliceblue;
+    aspect-ratio: auto;
+    position: relative;
 }
 
 .gameContent {
     display: block;
-    padding: 10px;
+    margin: 0px;
     width: 100%;
     height: 100%;
 }

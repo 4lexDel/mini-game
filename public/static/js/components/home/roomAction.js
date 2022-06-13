@@ -21,12 +21,13 @@ export function createRoom() {
     let pseudo = $("#pseudoInput").val();
 
     let access = $("#roomAccessRadio").is(':checked');
+    let playerNumber = $("#playerLimitNumber").val();
 
-    console.log(value + " : " + pseudo + " (" + access + ")");
+    console.log(value + " : " + pseudo + " (" + access + ") => " + playerNumber);
     //console.log($("#roomAccessRadio"));
 
     if (value != "") {
-        socket.emit("create room", value, pseudo, access);
+        socket.emit("create room", value, pseudo, access, playerNumber);
     } else {
         $("#resultRoom").html('<div  class="alert alert-warning" role="alert">Input empty !</div>');
     }
@@ -43,7 +44,7 @@ function refreshRoomList(rooms) {
     let htmlContent = "<ul>";
 
     rooms.forEach(room => {
-        htmlContent += "<li><a href=\"./game/" + room.id + "/guest\" data-link>" + room.id + " : " + room.players.length + " joueur(s)</li>";
+        htmlContent += "<li><a href=\"./game/" + room.id + "/guest\" data-link>" + room.id + " : " + room.players.length + "/" + room.playerLimit + " joueur(s)</li>";
     });
     htmlContent += "</ul>";
 

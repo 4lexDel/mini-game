@@ -1,9 +1,9 @@
 $(window).resize(function resizeCanvas() {
     console.log("resize");
-    let widthElement = $(window).width();
-    let heightElement = $(window).height();
-    widthElement *= 9 / 10;
-    heightElement *= 4 / 5;
+    let widthElement = $("#canvasGame").parent().width();
+    let heightElement = $("#canvasGame").parent().height();
+    heightElement = document.documentElement.clientHeight * 8 / 10;
+
 
     $("#canvasGame").width(widthElement).height(heightElement);
 })
